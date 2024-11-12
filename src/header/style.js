@@ -12,6 +12,7 @@ export const title = styled.div`
   justify-content: center;
   font-size: 20px;
   font-weight: 800;
+  cursor: pointer;
 `;
 
 //nav의 li를 감싸는 ul
@@ -26,5 +27,6 @@ export const navUl = styled.ul`
 export const navLi = styled.li`
   &:hover {
     color: blue;
+    cursor: pointer;
   }
 `;
