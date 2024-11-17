@@ -3,7 +3,7 @@ import * as S from "../style.js";
 import { useNavigate } from "react-router-dom";
 
 const Nav = function () {
-  const text = ["1장", "계산기", "ToDoList"];
+  const text = ["1장", "계산기", "3장"];
 
   const navigate = useNavigate();
 

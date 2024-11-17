@@ -1,4 +1,4 @@
-import * as S from "../style.js"; // 스타일링을 위한 import (스타일을 정의한 파일이 있어야 합니다)
+import * as S from "../style"; // 스타일링을 위한 import (스타일을 정의한 파일이 있어야 합니다)
 import { useState } from "react";
 
 const ToDoList = function () {
@@ -43,33 +43,31 @@ const ToDoList = function () {
     setTodos(todos.filter((todo) => todo.checked !== true));
   };
   return (
-    <S.mainDiv>
-      <S.textInput
-        type="text"
-        value={newTodo}
-        onChange={(e) => setNewTodo(e.target.value)}
-        placeholder="새 할 일 입력"
-      />
-      <div onClick={AddToDo}>Add</div>
-
-      <div>
+    <S.listDiv>
+      <S.listHead>
+        <S.textInput
+          type="text"
+          value={newTodo}
+          onChange={(e) => setNewTodo(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              AddToDo();
+            }
+          }}
+          placeholder="새 할 일 입력"
+        />
+        <S.toDoAdd onClick={AddToDo}>+</S.toDoAdd>
+      </S.listHead>
+      <S.toDoList>
         {todos.map((todo) => (
-          <div key={todo.id}>
-            <input type="checkbox" checked={todo.checked} onChange={() => toggleCheck(todo.id)} />
-            <div
-              style={{
-                textDecoration: todo.checked ? "line-through" : "none",
-              }}
-            >
-              {todo.id}
-              {todo.text}
-            </div>
-            <div onClick={() => deleteTodo(todo.id)}>Delete</div>
-          </div>
+          <S.listItems key={todo.id} ischecked={todo.checked} onClick={() => toggleCheck(todo.id)}>
+            <S.listItemsText>{todo.text}</S.listItemsText>
+            <S.deleteBtn onClick={() => deleteTodo(todo.id)}>Delete</S.deleteBtn>
+          </S.listItems>
         ))}
-      </div>
-      <div onClick={selectdeleteTodo}>ed</div>
-    </S.mainDiv>
+      </S.toDoList>
+      <S.selectDeleteBtn onClick={selectdeleteTodo}>선택항목 지우기</S.selectDeleteBtn>
+    </S.listDiv>
   );
 };
 
