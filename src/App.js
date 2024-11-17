@@ -13,7 +13,7 @@ import ThirdPage from "./ThirdPage/component/ThirdPage";
  */
 
 function App() {
-  const text = ["1장", "2장", "3장"];
+  const text = ["1장", "계산기", "ToDoList"];
   const components = [FirstPage, SecondPage, ThirdPage];
 
   return (
