@@ -42,6 +42,7 @@ const ToDoList = function () {
   const selectdeleteTodo = () => {
     setTodos(todos.filter((todo) => todo.checked !== true));
   };
+
   return (
     <S.listDiv>
       <S.listHead>
@@ -56,16 +57,19 @@ const ToDoList = function () {
           }}
           placeholder="새 할 일 입력"
         />
+
         <S.toDoAdd onClick={AddToDo}>+</S.toDoAdd>
       </S.listHead>
+
       <S.toDoList>
         {todos.map((todo) => (
-          <S.listItems key={todo.id} ischecked={todo.checked} onClick={() => toggleCheck(todo.id)}>
-            <S.listItemsText>{todo.text}</S.listItemsText>
+          <S.listItems key={todo.id} ischecked={todo.checked}>
+            <S.listItemsText onClick={() => toggleCheck(todo.id)}>{todo.text}</S.listItemsText>
             <S.deleteBtn onClick={() => deleteTodo(todo.id)}>Delete</S.deleteBtn>
           </S.listItems>
         ))}
       </S.toDoList>
+
       <S.selectDeleteBtn onClick={selectdeleteTodo}>선택항목 지우기</S.selectDeleteBtn>
     </S.listDiv>
   );

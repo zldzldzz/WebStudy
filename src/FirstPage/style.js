@@ -87,6 +87,7 @@ export const deleteBtn = styled.div`
   margin: auto;
   margin-left: 4%;
   font-size: 15px;
+  z-index: 2;
 `;
 export const listItemsText = styled.div`
   margin: auto;
